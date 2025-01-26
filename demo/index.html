@@ -27,6 +27,44 @@
     </form>
     <div id="result"></div>
 
+    <script>
+    $('#form1').on('submit', function (e) {
+    e.preventDefault();
+    var inputValueResult = formValidator({
+        form: '#form1',
+        inputName: 'username',
+        errorClass: '.error-message1',
+        errorMessage: 'Please enter a valid email or phone number.' 
+    });
+
+    if (!inputValueResult) { return; }
+
+    $.ajax({
+        url: 'submit.php',
+        type: 'POST',
+        data: { username: inputValueResult },
+    });
+});
+
+
+$('#form2').on('submit', function (e) {
+    e.preventDefault();
+    var inputValueResult = formValidator({
+        form: '#form2',
+        inputName: 'username',
+        errorClass: '.error-message2',
+        errorMessage: 'Please enter a valid email or phone number.' 
+    });
+
+    if (!inputValueResult) { return; }
+
+    $.ajax({
+        url: 'submit.php',
+        type: 'POST',
+        data: { username: inputValueResult },
+    });
+});
+</script>
 
 </body>
 
