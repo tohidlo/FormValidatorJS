@@ -38,9 +38,44 @@ FormValidatorJS is a lightweight and reliable solution for form validation. It s
 Here’s an example of how to set up FormValidatorJS:
 
 ```javascript
-formValidator({
+var inputValueResult = formValidator({
     form: '#myForm',              // The form selector
     inputName: 'emailOrPhone',    // Name of the input field to validate
     errorClass: '.error-message', // Selector for the error message element
     errorMessage: 'Please enter a valid email or phone number.' // Custom error message
 });
+```
+
+## Ajax form validation
+```javascript
+$('#form1').on('submit', function (e) {
+    e.preventDefault();
+    var inputValueResult = formValidator({
+        form: '#form1',
+        inputName: 'username',
+        errorClass: '.error-message1',
+        errorMessage: 'Please enter a valid email or phone number.' 
+    });
+
+    if (!inputValueResult) { return; }
+
+    $.ajax({
+        url: 'submit.php',
+        type: 'POST',
+        data: { username: inputValueResult },
+        error: function () {
+            $('#result').html('An error occurred with form 1!');
+        }
+    });
+});
+```
+```html
+<form id="form1">
+    <h3>Form 1</h3>
+    <input type="text" name="username" placeholder="Email or Phone Number" required>
+    <div class="error-message1"></div>
+    <button type="submit">Submit Form 1</button>
+</form>
+
+```
+
