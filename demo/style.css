@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  font-family: tahoma;
+  margin: 50px 0 0 0;
+}
+body * {
+  padding: 10px;
+  margin: 0;
+  border: ;
+  background: ;
+  border-radius: ;
+  border: ;
+}
+.error-message1 {
+  color: red;
+  font-size: 13px;
+  margin: 5px;
+}
+input {
+  width: 200px;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+}
+button {
+  cursor: pointer;
+}
