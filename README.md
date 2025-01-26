@@ -63,9 +63,6 @@ $('#form1').on('submit', function (e) {
         url: 'submit.php',
         type: 'POST',
         data: { username: inputValueResult },
-        error: function () {
-            $('#result').html('An error occurred with form 1!');
-        }
     });
 });
 ```
@@ -76,6 +73,63 @@ $('#form1').on('submit', function (e) {
     <div class="error-message1"></div>
     <button type="submit">Submit Form 1</button>
 </form>
+
+```
+## Ability to use multiple forms and Ajax requests
+```javascript
+$('#form1').on('submit', function (e) {
+    e.preventDefault();
+    var inputValueResult = formValidator({
+        form: '#form1',
+        inputName: 'username',
+        errorClass: '.error-message1',
+        errorMessage: 'Please enter a valid email or phone number.' 
+    });
+
+    if (!inputValueResult) { return; }
+
+    $.ajax({
+        url: 'submit.php',
+        type: 'POST',
+        data: { username: inputValueResult },
+    });
+});
+
+
+$('#form2').on('submit', function (e) {
+    e.preventDefault();
+    var inputValueResult = formValidator({
+        form: '#form2',
+        inputName: 'username',
+        errorClass: '.error-message2',
+        errorMessage: 'Please enter a valid email or phone number.' 
+    });
+
+    if (!inputValueResult) { return; }
+
+    $.ajax({
+        url: 'submit.php',
+        type: 'POST',
+        data: { username: inputValueResult },
+    });
+});
+```
+```html
+<form id="form1">
+    <h3>Form 1</h3>
+    <input type="text" name="username" placeholder="Email or Phone Number" required>
+    <div class="error-message1"></div>
+    <button type="submit">Submit Form 1</button>
+</form>
+
+<!-- Form 2 -->
+<form id="form2">
+    <h3>Form 2</h3>
+    <input type="text" name="username" placeholder="Email or Phone Number" required>
+    <div class="error-message2"></div>
+    <button type="submit">Submit Form 2</button>
+</form>
+<div id="result"></div>
 
 ```
 
