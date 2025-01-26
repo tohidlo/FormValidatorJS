@@ -32,7 +32,7 @@
         form: '#form1',
         inputName: 'username',
         errorClass: '.error-message1',
-        errorMessage: 'Please enter a valid email or phone number.' 
+        errorMessage: 'Please enter a valid email or phone number form 1.' 
     });
 
     if (!inputValueResult) { return; }
@@ -41,6 +41,9 @@
         url: 'submit.php',
         type: 'POST',
         data: { username: inputValueResult },
+        error: function () {
+            $('#result').html('Form 1 has been sent');
+        }
     });
 });
 
@@ -51,7 +54,7 @@ $('#form2').on('submit', function (e) {
         form: '#form2',
         inputName: 'username',
         errorClass: '.error-message2',
-        errorMessage: 'Please enter a valid email or phone number.' 
+        errorMessage: 'Please enter a valid email or phone number form 2.' 
     });
 
     if (!inputValueResult) { return; }
@@ -60,6 +63,9 @@ $('#form2').on('submit', function (e) {
         url: 'submit.php',
         type: 'POST',
         data: { username: inputValueResult },
+        error: function () {
+            $('#result').html('Form 1 has been sent');
+        }
     });
 });
 </script>
